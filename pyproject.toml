@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlalchemy-doris"
+authors = [
+    {name = "actcwlf", email = "actcwlf@qq.com"},
+]
+description = "Apache Doris dialect for SQLAlchemy"
+readme = "README.md"
+url = "https://github.com/actcwlf/sqlalchemy-doris"
+requires-python = ">=3.7"
+keywords = ["Apache Doris", "SQLAlchemy"]
+license = {text = "Apache Software License"}
+classifiers = [
+#    "Framework :: Django",
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["version"]
+dependencies = [
+    "sqlalchemy>=1.4",
+    "sqlalchemy-utils>=0.38.3"
+]
+
+[project.optional-dependencies]
+mysqldb = ["mysqlclient>=2.1.0"]
+pymysql = ["pymysql"]
+
+[tool.setuptools_scm]
+write_to = "src/sqlalchemy_doris/_version.py"
+
+[tool.setuptools.dynamic]
+version = {attr = "sqlalchemy_doris._version.__version__"}
+
+[project.entry-points."sqlalchemy.dialects"]
+doris = "sqlalchemy_doris.dialect:DorisDialect"
+'doris.pymysql' = "sqlalchemy_doris.dialect:DorisDialect"
+'doris.mysqldb' = "sqlalchemy_doris.dialect:DorisDialect_mysqldb"
