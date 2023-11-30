@@ -19,9 +19,8 @@
 from sqlalchemy.dialects import registry
 
 from sqlalchemy_doris._version import __version__
-
+from sqlalchemy_doris.dialect import RANGE, RANDOM, HASH
 
 registry.register("doris", "sqlalchemy_doris.dialect", "DorisDialect")
-registry.register("doris+pymysql", "sqlalchemy_doris.dialect", "DorisDialect")
-registry.register("doris+mysqldb", "sqlalchemy_doris.dialect", "DorisDialect_mysqldb")
-
+registry.register("doris.pymysql", "sqlalchemy_doris.dialect", "DorisDialect_pymysql")
+registry.register("doris.mysqldb", "sqlalchemy_doris.dialect", "DorisDialect_mysqldb")
