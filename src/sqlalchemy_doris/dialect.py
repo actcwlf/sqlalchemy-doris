@@ -36,8 +36,6 @@ from sqlalchemy.schema import CreateTable
 logger = logging.getLogger(__name__)
 
 
-
-
 def join_args_with_quote(*args):
     args = [f'`{a}`' for a in args]
     args_str = ', '.join(args)
@@ -54,7 +52,7 @@ def format_properties(**kwargs):
 
 
 class HASH:
-    def __init__(self, *keys: [str], buckets: int | str = 'auto'):
+    def __init__(self, *keys: [str], buckets='auto'):
         self.keys = keys
         self.buckets = buckets
 
