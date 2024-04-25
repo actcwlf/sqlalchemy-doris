@@ -273,7 +273,8 @@ class DorisDialectMixin(DefaultDialect):
             #
             # there's more "doesn't exist" kinds of messages but they are
             # less clear if mysql 8 would suddenly start using one of those
-            if self._extract_error_code(e.orig) in (1105, ):
+            # print('caught exception', e)
+            if self._extract_error_code(e.orig) in (1105, 1051):
                 info: str = e.orig.args[1].split('detailMessage = ')[-1]
                 if info.startswith('Unknown table'):
                     return False
