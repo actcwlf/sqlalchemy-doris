@@ -302,6 +302,7 @@ class DorisDialectMixin(DefaultDialect):
         return [
             row[0]
             for row in self._compat_fetchall(rp, charset=charset)
+            if row[1] in ("BASE TABLE")
         ]
 
     def get_view_names(self, connection, schema=None, **kw):
